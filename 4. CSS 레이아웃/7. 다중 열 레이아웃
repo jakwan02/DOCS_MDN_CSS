@@ -1,0 +1,55 @@
+3열 레이아웃
+container 클래스가 있는 div가 multi col 컨테이너가 된다.
+
+column-count 또는 column-width의 두 가지 속성 중 하나를 사용하여
+multicol을 활성화한다. 
+속성은 숫자를 값으로 사용하고 해당 수의 열을 만든다.
+
+.container {
+  column-count: 3;  // 3개의 열 생성
+}
+
+
+열 너비 설정
+column-width: 200px;
+
+이제 브라우저는 지정한 크기의 열을 최대한 많이 제공한다. 그런 다음
+나머지 공간은 기존 열 간에 공유된다.
+즉, 컨테이너가 해당 너비로 정확히 나눌 수 없는 한 지정한 너비를 정확히 얻을 수 없다.
+
+
+열 스타일 지정
+multicol로 만든 열은 개별적으로 스타일을 지정할 수 없다.
+
+열이 표시되는 방식을 변경할 수 있는 두 가지 방법이 있다.
+- column-gap을 사용하여 열 사이의 간격 크기 변경
+- column-rule을 사용하여 열 사이에 규칙 추가
+
+column-rule은 column-rule-width, column-rule-style, column-rule-color의 줄임말.
+
+column-gap: 20px;
+column-rule: 4px dotted rgb(79, 185, 227);
+주의해야 할 점은 규칙 자체의 너비를 차지하지 않는다.
+
+
+Spanning columns
+요소가 모든 열에 걸쳐 있도록 할 수 있다.
+
+이는 스패닝 요소가 도입된 위치에서 콘텐츠가 중단된 다음 요소 아래에서
+계속되어 새 열 집합이 만들어 진다.
+
+요소가 모든 열에 걸쳐 있도록 하려면 column-span: all 속성 값을 지정한다.
+
+
+열 및 조각화
+다중 열 레이아웃의 내용은 조각화된다. 콘텐츠를 multicol 컨테이너로
+전환하면 열로 조각화된다.
+
+제목은 열이 둘 사이에 조각화되는 경우 텍스트에서 분리된다.
+
+
+break-inside 설정
+multicol 및 페이징 미디어에서 콘텐츠 분리를 제어하는 속성을 제공한다.
+
+break-inside: avoid 속성을 추가하면 상자가 한 조각으로 유지되며 
+이제 열에서 조각화되지 않는다.

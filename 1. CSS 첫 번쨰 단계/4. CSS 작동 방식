@@ -1,0 +1,63 @@
+CSS는 어떻게 작동하나?
+
+1. 브라우저는 HTML을 로드한다.
+
+2. HTML을 DOM(Document Object Model)로 변환한다. DOM은 컴퓨터 메모리의
+문서를 나타냄.
+
+3. 그 다음 브라우저는 포함된 이미지 및 비디오와 같은 HTML 문서에 연결된
+대부분의 리소스와 연결된 CSS를 가져옴. JS는 작업에서 나중에 처리되므로 더 간단하게
+하기위해 여기서는 다루지 않는다.
+
+4. 브라우저는 가져온 CSS를 구문분석하고 선택자 유형별로 다른 규칙을 다른 "buckets"으로
+정렬한다. (이 중간 단계를 render tree라고 함.)
+
+5. render tree는 규칙이 적용된 후에 표시되어야 하는 구조로 배치된다.
+
+6. 페이지의 시각적 표시가 화면에 표시된다. (이 단계를 painting이라고 함.)
+
+Load HTML   -   Parse HTML    -   Create DOM tree   -   Display
+                 Load CSS     -     Parse CSS(Attach style to DOM nodes)
+
+
+DOM 정보
+DOM은 트리 구조. 마크업 언어의 각 요소, 속성 및 텍스트는 트리 구조에서
+DOM node가 된다. 노드는 다른 DOM 노드와의 관계에 의해 정의된다.
+
+DOM은 CSS와 문서의 내용이 만나는 곳이기 때문에 DOM을 이해하면 CSS를 설계,
+디버그 및 유지 관리하는 데 도움이 된다. 브라우저 DevTools로 작업을 시작하면,
+적용할 규칙을 보기 위해 항목을 선택할 때 DOM을 탐색하게 된다.
+
+
+실제 DOM 표현
+HTML이 DOM으로 변환되는 방법을 보여주는 예제.
+<p>
+  Let's use:
+  <span>Cascading</span>
+  <span>Style</span>
+  <span>Sheets</span>
+</p>
+
+P
+├─ "Let's use:"
+├─ SPAN
+|  └─ "Cascading"
+├─ SPAN
+|  └─ "Style"
+└─ SPAN
+   └─ "Sheets"
+
+DOM에서, p요소에 해당하는 노드는 부모이다. 자식은 텍스트 노드이고
+span 요소에 해당하는 세 개의 노드이다.
+
+브라우저가 이전 HTML을 해석하는 방법이다. 위의 DOM 트리를 렌더링 한 다음 출력한다.
+
+
+
+DOM에 CSS 적용하기
+브라우저는 HTML을 구문 분석하고 그로부터 DOM을 작성한 다음, CSS를 구문 분석한다.
+
+
+
+브라우저에서 인식하지 못하는 CSS를 발견하면 브라우저는 이를 무시하고 다음 단계로
+넘어간다. 새 기능을 이해하지 못할 경우 오류가 발생하지 않는다.

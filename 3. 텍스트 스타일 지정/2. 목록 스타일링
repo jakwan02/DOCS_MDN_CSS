@@ -1,0 +1,44 @@
+unordered list  순서 없는
+ordered list    순서 있는
+
+ul ol li
+
+dl dt dd
+
+목록 간격 처리
+font-size, line-height
+
+
+목록별 스타일
+ul, ol 요소에 설정할 수 있다.
+
+- list-style-type: 글머리 기호 유형을 설정
+- list-style-position: 글머리 기호를 목록 항목 내부 or 외부 표시할지 설정
+- list-style-image: 글머리 기호에 사용자 지정 이미지
+
+list-style-type
+upper-roman 값을 사용하면 대분자 로마 숫자 글머리 기호 유형을 설정.
+
+list-style-position
+inside, outside
+
+list-style-image
+url(star.png)
+이 속성은 위치, 크기 등을 제어하는 측면에서 약간 제한적이다.
+li 요소에 배경으로 설정하는 것이 더 좋다.
+
+list-style 속기
+list-style: square url(example.png) inside; // type image position
+
+
+목록 카운팅 제어
+start 속성으로 1이 아닌 숫자부터 목록 계산을 할 수 있다.
+<ol start="4">
+
+반전
+카운트다운을 반대로 시작.
+<ol start="4" reversed>
+
+값
+value 속성으로 특정 값 지정
+<li value="2">

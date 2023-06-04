@@ -1,0 +1,9 @@
+justify-content를 사용하여 main axis에 정렬되고
+align-items를 사용하여 cross axis에 정렬
+
+align-self를 사용하여 블록 하나의 cross axis 정렬을 재정의
+
+flex-direction: row를 설정하면 main axis와 cross axis의 방향이 바뀐다.
+
+
+flex-gap, row-gap, coloum-gap 속성으로 갭을 만든다.

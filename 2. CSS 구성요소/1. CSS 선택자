@@ -1,0 +1,34 @@
+스타일을 지정할 때 웹 페이지의 HTML 요소를 대상으로 하는데 사용된다.
+
+
+h1,
+.special {
+  color: blue;
+}
+각 라인이 새 라인에 있으면 선택자를 더 읽기 쉽다.
+
+
+선택자의 유형
+
+- Type, class 및 ID 선택자
+h1 {}
+.box {}
+#unique {}
+
+- 속성 선택자
+요소에 특정 속성이 있는지에 따라 요소를 선택하는 방법
+a[title] {}
+
+또는 특정 값을 가진 속성의 존재 여부를 기반으로 선택
+a[href=""] {}
+
+- Pseudo-classes 및 pseudo-elements
+요소의 특정 상태를 스타일링하는 pseudo-classes가 포함된다.
+a:hover {}
+
+또한 요소 자체가 아닌 요소의 특정 부분을 선택하는 pseudo-elements도
+포함된다. 
+p::first-line { } // 요소 내부의 첫 번째 텍스트 라인을 선택
+
+- 결합자 (Combinators)
+article > p {}  // article 요소의 자식인 p 요소를 선택

@@ -1,0 +1,165 @@
+충돌하는 규칙
+동일한 속성에 대해 서로 다른 값을 적용하는 두 개의 규칙이 있을 경우 충돌.
+캐스케이드와 밀접하게 관련된 특이성 개념은 그러한 충돌이 있을 때 어떤 규칙이
+적용되는지를 제어하는 메커니즘이다.
+
+일부 CSS 속성이 현재 요소의 부모 요소에 설정된 값을 상속하고 일부는 상속하지 않는다.
+이로 인해 예상하지 못한 동작이 발생할 수도 있다.
+
+
+Cascade
+동일한 캐스케이드 레이어의 두 규칙이 적용되고 둘 다 동일한 특이성을 갖는 경우
+스타일시트에서 마지막에 정의된 규칙이 사용된다.
+h1 { 
+    color: red; 
+}
+h1 { 
+    color: blue;  // 마지막 규칙이 사용됨. 
+}
+
+
+Specificity
+특이성은 브라우저가 요소에 적용되는 속성 값을 결정하는 데 사용되는 알고리즘.
+특이성은 기본적으로 선택기의 선택이 얼마나 구체적인지를 측정한 것.
+
+요소 선택기를 덜 구체적. 의사 요소 선택기는 일반 요소 선택기와 동일한 특이성을 갖는다.
+클래스 선택기가 더 구체적. 속성 선택기 및 의사 클래스는 동일한 가중치.
+
+.main-heading { // 특이성 (더 구체적인 선택기의 속성 값을 결정)
+    color: red; 
+}
+        
+h1 { 
+    color: blue; 
+}
+
+
+Inheritance
+부모 요소에 설정된 일부 CSS 속성 값은 자식 요소에 의해 상속되고 일부는 상속되지 않는다.
+
+예를 들어 요소에 and를 설정하면 다른 색상과 글꼴 값을 직접 적용하지 않는 한 
+그 안의 모든 요소도 해당 색상과 글꼴로 스타일이 지정된다.
+
+요소의 너비를 50%로 설정하면 모든 하위 항목의 너비가 부모 너비의 50%가 되지 않는다.
+
+
+상속 제어
+CSS는 상속을 제어하기 위한 5개의 특별한 범용 속성 값을 제공한다.
+모든 CSS 속성은 이러한 값을 허용함.
+
+inherit
+선택한 요소에 적용된 속성 값을 부모 요소의 속성 값과 동일하게 설정.
+(상속을 한다.)
+
+initial
+선택한 요소에 적용된 속성 값을 해당 속성의 초기 값으로 설정.
+
+revert
+선택한 요소에 적용된 속성 값을 해당 속성에 적용된 기본값이 아닌
+브라우저의 기본 스타일로 다시 설정.
+
+revert-layer
+선택한 요소에 적용된 특성 값을 이전 계단식 레이어에 설정된 값으로 재설정.
+
+unset
+속성을 자연 값으로 다시 설정. 
+
+
+body {
+    color: green;
+}
+          
+.my-class-1 a {
+    color: inherit;   // green
+}
+          
+.my-class-2 a {
+    color: initial;   // black
+}
+          
+.my-class-3 a {
+    color: unset;     // green
+}
+
+
+모든 속성 값 재설정
+CSS 속기 설정 all을 사용하여 상속 값 중 하나를 거의 모든 속성에
+한번에 적용할 수 있다.
+
+blockquote {
+    background-color: orange;
+    border: 2px solid blue;
+}
+        
+.fix-this {
+    all: unset;
+}
+
+
+캐스케이드 이해
+둘 이상의 스타일 블록에 다른 값을 적용할 때 적용되는 CSS 규칙을 
+케스케이드가 어떻게 정의하는지 살펴보자.
+
+고려해야 할 세 가지 요소.
+
+  1. 소스 순서
+  2. 특이성
+  3. 중요도
+
+소스 순서
+동일한 가중치를 갖는 경우 CSS에서 마지막에 오는 규칙이 승리.
+
+특이성
+클래스 선택기는 요소 선택기보다 가중치가 더 높으므로 클래스 스타일 블록에
+정의된 속성이 요소 스타일 블록에 정의된 속성을 재정의.
+
+style 특성 내의 스타일 선언은 특수성에 관계없이 모든 일반 스타일보다 우선.
+(인라인 스타일 우선)
+
+중요도  !important
+순서, 특이성, 인라인 스타일을 무시하는데 사용할 수 있는 특별한 CSS가 있다.
+이 플래그는 개별 속성과 값 쌍을 가장 구체적인 규칙으로 만드는데 사용되므로
+일반 인라인 스타일을 포함하여 캐스케이드의 일반 규칙을 재정의 한다.
+
+.better {
+    background-color: gray;
+    border: none !important;
+}
+
+
+케스케이드 레이어의 순서
+캐스케이드 레이어에서 CSS를 선언할 때 우선 순위는 레이어가 선언되는 순서에 따라
+결정된다. 레이어 외부에 선언된 CSS 스타일은 해당 스타일이 선언된 순서대로
+마지막으로 선언된 레이어인 것처럼 이름이 지정되지 않은 레이어로 결합된다.
+
+!important 플래그가 지정된 스타일의 경우 후속 레이어나 레이어 외부에서 선언된
+중요한 스타일보다 우선한다.
+
+@layer firstLayer, secondLayer;
+
+p { /* 0-0-1 */
+  background-color: red;
+  color: grey !important;
+  border: 5px inset purple;
+}
+p#addSpecificity { /* 1-0-1 */
+  border-style: solid !important;
+}
+
+@layer firstLayer {
+  #addSpecificity { /* 1-0-0 */
+    background-color: blue;
+    color: white !important;
+    border-width: 5px;
+    border-style: dashed !important;
+  }
+}
+
+@layer secondLayer {
+  p#addSpecificity { /* 1-0-1 */
+    background-color: green;
+    color: orange !important;
+    border-width: 10px;
+    border-style: dotted !important;
+  }
+}     

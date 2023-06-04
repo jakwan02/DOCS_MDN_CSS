@@ -1,0 +1,57 @@
+HTML에 CSS 적용하는 3가지 방법
+
+- 외부 스타일 시트
+<link rel="stylesheet" href="styles.css">
+
+- 내부 스타일 시트
+<style>
+  h1 {
+    color: blue;
+    background-color: yellow;
+    border: 1px solid black;
+  }
+
+  p {
+    color: red;
+  }
+</style>
+
+- 인라인 스타일
+<h1 style="color: blue;background-color: yellow;border: 1px solid black;">
+  헬로우 월드!</h1>
+
+
+우선 순위
+CSS 언어에는 충돌시 어떤 규칙이 이기는지 제어하는 규칙이 있다.
+이러한 규칙을 계단식(cascade) 및 우선 순위(specificity)라고 한다.
+class 선택자 > 요소 선택자
+
+
+속성 및 값
+Properties
+Values
+값과 쌍을 이루는 속성을 CSS 선언(declaration)이라고 한다.
+
+
+함수
+function 형태를 취하는 몇 가지 값이 있다.
+calc(), rotate() 등
+
+
+@rules("at-rules"로 발음)
+CSS에 행동 방법에 대한 지침을 제공하는 특수 규칙이다.
+
+@import 'styles2.css';  // 추가 스타일 시트를 기본 CSS 스타일 시트로 가져옴.
+
+@media (min-width: 30em) {  // 특정 조건이 참일 때 CSS를 적용하는 미디어 쿼리
+  body {
+    background-color: blue;
+  }
+}
+
+
+속기 (shorthands)
+font, background, padding, margin 등의 일부 속성은 속기 속성이라고 불린다.
+여러 줄의 속성 값을 한줄로 작성하여 시간을 절약하고 깔끔하게 만들 수 있기 때문.
+
+padding: 10px 15px 15px 5px; // 위 오 아래 왼

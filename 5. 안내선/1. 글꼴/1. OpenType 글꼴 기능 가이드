@@ -1,0 +1,27 @@
+합자, 커닝, 분수, 숫자 스타일 등이 포함됨.
+
+글꼴 기능
+- 커닝 font-kerning
+특정 글리프 쌍 사이의 간격을 나타냄.
+
+
+- 대체 font-variant-alternates
+전체 대체 집합 또는 특정 집합만 활성화할 수 있다.
+
+
+- 합자 font-variant-ligatures
+두 개 이상의 개별 글리프를 보다 매끄럽게 표현하기 위해
+
+
+- 위치 font-variant-position
+입력 체계 위 첨자 및 아래 첨자 글리프를 활성화
+
+
+- 수도 font-variant-caps
+작은 대문자
+
+
+- 숫자 font-variant-numeric
+
+
+- 동아시아 font-variant-east-asian

@@ -1,0 +1,58 @@
+기본적으로 웹은 오른쪽에서 왼쪽으로 쓰는 언어(아랍어)보다 왼쪽에서 오른쪽으로 쓰는
+언어(영어, 프랑스어)를 더 잘 지원하는 경향이 있다.
+
+그러나 최근 몇 년 동안 CSS는 오른쪽에서 왼쪽으로 쓰는 콘텐츠뿐만 아니라
+위에서 아래로 콘텐츠(일본어)를 포함하여 콘텐츠의 다양한 방향성을 더 잘 
+지원하기 위해 발전했으며, 이러한 다양한 방향성을 쓰기 모드라고 한다.
+
+쓰기 모드는 텍스트가 가로 또는 세로로 실행되는지 여부를 나타낸다.
+writing-mode 속성을 사용하면 한 쓰기 모드에서 다른 쓰기 모드로 전환할 수 있다.
+
+속성 3가지
+horizontal-tb: 위에서 아래로 블록 흐름 방향, 문장은 가로로 실행
+vertical-rl: 오른쪽에서 왼쪽으로 블록 흐름 방향, 문장은 세로로 실행
+vertical-lr: 왼쪽에서 오른쪽으로 블록 흐름 방향, 문장은 세로로 실행
+
+블록 차원은 항상 사용 중인 쓰기 모드에서 페이지에 표시되는 방향 블록이다.
+인라인 차원은 항상 문장이 흐르는 방향이다.
+
+
+쓰기 모드에 따라 높이를 너비로 바꾸는 것.
+이를 더 쉽게 하기 위해 CSS는 최근 매핑된 속성 집합을 개발했다.
+
+가로 쓰기 모드에 있을 때 매핑되는 속성을 inline-size라고 하며, 인라인 차원의 크기를 나타낸다.
+(block-size)
+
+
+논리적 여백, 테두리 및 안쪽 여백 속성
+.logical {
+  margin-block-start: 20px;
+  padding-inline-end: 2em;
+  padding-block-start: 2px;
+  border-block-start: 5px solid pink;
+  border-inline-end: 10px dotted rebeccapurple;
+  border-block-end: 1em double orange;
+  border-inline-start: 1px solid black;
+}
+
+.physical {
+  margin-top: 20px;
+  padding-right: 2em;
+  padding-top: 2px;
+  border-top: 5px solid pink;
+  border-right: 10px dotted rebeccapurple;
+  border-bottom: 1em double orange;
+  border-left: 1px solid black;
+}
+
+margin-top 프로퍼티는 margin-block-start에 매핑되며, 이는 항상 블록 치수 시작 부분의 여백을 참조한다.
+padding-left 속성은 인라인 방향의 시작에 적용되는 padding-inline-start에 매핑된다.
+이것은 쓰기 모드에서 문장이 시작되는 곳이다.
+border-bottom 속성은 블록 차원의 끝에 있는 경계인 border-block-end에 매핑된다.
+
+
+물리적 속성을 사용해야하나, 아니면 논리적 속성을 사용해야 하나?
+논리적 속성과 값은 물리적 속성보다 최신이므로 최신에야 브라우저에서 구현되었다.
+여러 쓰기 모드를 사용하지 않는 경우 지금은 실제 버전을 사용하는 것이 좋다.
+그러나 궁극적으로 우리는 사람들이 fiexbox나 grid와 같은 레이아웃 방법을 다루기 시작하면
+많은 의미가 있기 때문에 대부분의 경우 논리적 버전으로 전환할 것으로 예상한다.

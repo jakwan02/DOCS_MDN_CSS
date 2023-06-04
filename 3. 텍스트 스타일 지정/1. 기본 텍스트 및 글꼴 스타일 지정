@@ -1,0 +1,170 @@
+요소 내부의 텍스트가 요소의 콘텐츠 상자 안에 배치된다는 것을 알고 있을 것.
+
+콘텐츠 영역의 왼쪽 위(RTL 언어 콘텐츠의 경우 오른쪽 위)에서 시작하여 줄의 끝으로 흐른다.
+끝에 도달하면 다음 줄로 내려가 다시 끝으로 흐른다. 이 패턴은 모든 콘텐츠가 상자에 배치될 때까지 반복한다.
+
+텍스트 내용은 서로 인접한 줄에 배치되고 줄의 끝에 도달할 때까지 또는 br 요소를 사용하여
+수동으로 줄 바꿈을 강제하지 않는 한 일련의 인라인 요소처럼 효과적으로 동작한다.
+
+텍스트의 스타일을 지정하는데 사용되는 CSS 속성은 일반적으로 두 가지 범주로 나뉜다.
+
+  - 글꼴 스타일: 텍스트의 글꼴에 영향을 주는 속성(크기, 굵게 등)
+  - 텍스트 레이아웃 스타일: 텍스트의 간격 및 기타 레이아웃 기능에
+  영향을 주는 속성(선과 문자 사이의 간격, 상자 내 텍스트가 정렬되는 방식 등)
+
+
+글꼴
+
+
+색
+color 속성은 선택한 요소의 전경 내용(일반적으로 텍스트)의 색을 설정하지만
+text-decoration 속성을 사용하여 텍스트에 배치된 밑줄과 같은 몇 가지 다른 항목을 포함할 수도 있다.
+
+
+글꼴 패밀리
+텍스트에 다른 글꼴을 설정하려면 font-family 속성을 사용한다.
+
+p {
+  font-family: Arial;
+}
+이렇게 하면 페이지의 모든 단락이 모든 컴퓨터에서 볼 수 있는 arial 글꼴을 채택하게 된다.
+
+
+웹 안전 글꼴
+모든 시스템에서 일반적으로 사용할 수 있는 글꼴의 수는 특정 수 뿐이므로 큰 걱정 없이
+사용할 수 있다.
+
+Arial(Name) / sans-serif(Generic type)
+Courier New / monospace
+Georgia / serif
+Times New Roman / serif
+Trebuchet MS / sans-serif
+Verdana / sans-serif
+
+
+기본 글꼴
+CSS는 글꼴에 대한 5개의 일반 이름을 정의한다.
+serif         세리프가 있는 글꼴
+sans-serif    세리프가 없는 글꼴
+monospace     모든 문자의 너비가 동일한 글꼴. 일반적으로 코드에서 사용됨.
+cursive       손글씨를 에뮬레이트하기 위한 글꼴
+fantasy       장식용으로 사용되는 글꼴
+
+
+글꼴 스택
+브라우저에서 선택할 수 있는 여러 글꼴이 있도록 글꼴 스택을 제공할 수 있다.
+여기에는 쉼표로 구분된 여러 글꼴 이름으로 구성된 값이 포함된다.
+
+p {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+이 경우 브라우저는 목록의 시작 부분에서 시작하여 컴퓨터에서 해당 글꼴을
+사용할 수 있는지 확인한다. 사용할 수 없는 경우 다음 글꼴로 이동한다.
+(두 개 이상의 단어가 있는 글꼴 이름은 따옴표로 묶어야 한다.)
+
+
+글자 크기
+텍스트 크기를 조정하는데 사용하는 가장 일반적인 단위는 다음과 같다.
+- px
+- em
+- rem
+
+중첩된 요소의 글꼴 크기를 변경하기 시작하면 상황이 까다로워진다.
+작업을 단순하게 유지 가능한 경우 컨테이너 요소를 설정하지 않도록 하는 것이 좋다.
+
+
+글꼴 스타일, 글꼴 두께, 텍스트 변환 및 텍스트 장식
+CSS는 텍스트의 시각적 가중치/강조를 변경하는 네 가지 공통 속성을 제공한다.
+- font-style: 기울임꼴 텍스트를 켜거나 끄는데 사용됨.
+normal
+italic
+oblique
+
+- font-weight: 텍스트의 굵은 정도를 설정
+normal
+bold
+lighter
+bolder
+100~900
+
+- text-transform: 변환할 글꼴을 설정할 수 있다.
+none
+uppercase: 모든 텍스트를 대문자로 변환.
+lowercase: 모든 텍스트를 소문자로 변환.
+capitalize: 모든 단어를 첫 글자가 대문자로 변환하도록 변환.
+full-width: 모든 글리프를 고정 너비 사각형 안에 쓰도록 변환.
+
+- text-decoration: 글꼴에서 텍스트 장식을 설정/해체한다.
+none
+underline: 밑줄
+overline: 윗줄
+line-through: 취소선
+
+
+텍스트 그림자
+text-shadow 속성을 사용하여 텍스트에 그림자를 적용할 수 있다.
+이 값은 최대 4개의 값을 사용한다.
+
+text-shadow: 4px 4px 5px red;
+(그림자의 수평 오프셋, 그림자의 세로 오프셋, 흐림 반경, 그림자 색상)
+
+쉼표로 구분된 여러 그림자 값을 포함하여 동일한 텍스트에 여러 그림자를 적용할 수 있다.
+
+
+
+텍스트 레이아웃
+- 텍스트 정렬
+text-align 속성은 포함하는 콘텐츠 상자 내에서 텍스트가 정렬되는 방식을 제어하는 데 사용됨.
+left
+right
+center
+justify: 텍스트의 모든 줄이 동일한 너비가 되도록 단어 사이의 간격을 변경하여 텍스트를 펼침.
+
+
+- 줄 높이
+line-height 속성은 각 텍스트 줄의 높이를 설정한다.
+권장 줄 높이는 약 1.5~2이다.
+
+
+- 문자 및 단어 간격
+letter-spacing 및 word-spacing 속성을 사용하면 텍스트에서 문자와 단어 사이의
+간격을 설정할 수 있다. 밀도가 높은 글꼴의 가독성 향상.
+
+
+- 살펴볼 가치가 있는 다른 속성
+글꼴 스타일
+font-variant
+font-kerning
+font-feature-settings
+font-variant-alternates
+font-variant-caps
+font-variant-east-asian
+font-variant-ligatures
+font-variant-numeric
+font-variant-position
+font-size-adjust
+font-stretch
+text-underline-position
+text-rendering
+
+텍스트 레이아웃 스타일
+text-ident
+text-overflow
+white-space
+word-break
+direction
+hyphens
+line-break
+text-align-last
+text-orientation
+overflow-wrap
+writing-mode
+
+
+글꼴 속기
+font-style, font-variant, font-weight, font-stretch, font-size,
+line-height, font-family 순서로 작성된다.
+
+font-size와 line-height 속성 사이에 슬래시를 넣어야 함.
+
+font: italic normal bold normal 3em/1.5 Helvetica, Arial, sans-serif;

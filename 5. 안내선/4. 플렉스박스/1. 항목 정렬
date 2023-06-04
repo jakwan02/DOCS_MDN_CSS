@@ -1,0 +1,4 @@
+주축 정렬에 자동 여백 사용
+.push {
+  margin-left: auto;
+}
